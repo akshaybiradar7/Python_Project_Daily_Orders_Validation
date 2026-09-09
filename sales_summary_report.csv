@@ -1,0 +1,14 @@
+order_id,order_date,product_id,quantity,sales,city,product_name,price,category
+1,23-08-2026,100,1,10000,Bangalore,iphone,12000,mobile
+2,23-08-2026,200,2,30000,Mumbai,chair,15000,furniture
+3,23-08-2026,200,2,30000,Mumbai,chair,15000,furniture
+4,23-08-2026,500,3,30000,Bangalore,fridge,10000,electronics
+5,23-08-2026,300,2,10000,Bangalore,table,5000,furniture
+6,23-08-2026,400,1,2000,Mumbai,tv,2000,electronics
+7,23-08-2026,500,2,20000,Mysore,fridge,10000,electronics
+9,23-08-2026,300,1,5000,Bangalore,table,5000,furniture
+10,23-08-2026,300,2,10000,Mumbai,table,5000,furniture
+11,23-08-2026,100,3,30000,Mumbai,iphone,12000,mobile
+12,24-08-2026,400,5,10000,Bangalore,tv,2000,electronics
+13,23-08-2026,400,1,2000,Hyderabad,tv,2000,electronics
+14,23-08-2026,200,2,30000,Mumbai,chair,15000,furniture
