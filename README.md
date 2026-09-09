@@ -1,7 +1,27 @@
-# Order Cleaning Project (Pure Python, No Pandas)
+# Python_Project_Daily_Orders_Validation (Pure Python, No Pandas)
+
+## Overview
 
 A tiny project that cleans raw order data using only Python's built-in
-`csv`, `datetime`, and `os` modules.
+`csv`, `datetime`, and `os` modules.\
+Processing raw transaction logs manually creates bottlenecks and delays reconciliation. This pipeline automates the end-to-end workflow:
+
+1. **Ingestion:** Reads inbound daily order records (e.g., CSV, JSON, or database input).
+2. **Rule Evaluation:** Assesses each order against configured validation conditions (e.g., payment status, inventory availability, address completeness).
+3. **Data Segregation:**
+   - **Successful Orders:** Clean records ready for downstream fulfillment.
+   - **Rejected Orders:** Unmet records appended with an explicit `reason_for_rejection` column for auditing.
+4. **Email Notification:** Generates and dispatches a summary digest detailing counts of accepted versus rejected transactions.
+
+---
+
+## Features
+**Automated Batch Processing:** Handles daily transaction logs without manual intervention.\
+**Audit-Ready Error Logging:** Rejected records capture exact failure reasons directly in a dedicated column.\
+**Instant Monitoring:** Delivers high-level transactional health metrics via email upon job completion.\
+**Configurable Thresholds:** Validation logic and rules can be customized in one place.
+
+---
 
 ## Folder structure
 
@@ -25,6 +45,12 @@ A row is kept only if **all** of the following are true:
 2. `city` is `bangalore` or `mumbai` (case-insensitive)
 3. `order_date` is not a future date (compared to today)
 4. No column in the row is empty / null
+
+---
+## Getting Started
+**Prerequisites**\
+Python 3.8+\
+An SMTP server (e.g., Gmail App Password, AWS SES, SendGrid)
 
 ## How to run
 
@@ -58,3 +84,24 @@ python -m unittest test_clean_orders.py
   cleaned output.
 - Log dropped rows (with reasons) to a separate `output/rejected_orders.csv`
   for auditing.
+  
+  ---
+
+  ## Project Structure
+
+  ```
+  daily-order-validator/
+  ├── data/
+  │   ├── input/
+  │   └── output/
+  ├── src/
+  │   ├── filters.py
+  │   ├── test_filters.py      # Core rule-checking logic
+  │   ├── clean_orders.py   # Ingestion and split export
+  │   └── test_clean_orders.py       # SMTP/Email formatting service
+  ├── .env.example
+  ├── .gitignore
+  ├── main.py               # Application entry point
+  ├── sales_Summary_report.csv
+  └── README.md
+  ```
